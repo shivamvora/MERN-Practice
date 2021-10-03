@@ -4,6 +4,11 @@ const app = express();
 const mongoose = require('mongoose');
 dotenv.config({path:'./config.env'});
 require('./db/conn');
+// const User = require('./model/userSchema');
+app.use(express.json());
+// link router file
+app.use(require('./router/auth'));
+
 
 const PORT = process.env.PORT;
 
@@ -12,26 +17,10 @@ const PORT = process.env.PORT;
 // console.log(`hello my middle ware`);
 // next();
 // }
-
 // middleware();
 
 app.get( '/', ( req, res ) => {
-    res.send( 'Hello world from the server js file first route great cool' )
-} );
-
-app.get( '/about', ( req, res ) => {
-    console.log("Hello my about");
-    res.send( 'Hello world from about' )
-} );
-
-app.get( '/contact', ( req, res ) => {
-    res.send( 'Hello world from contact' )
-} );
-app.get( '/signin', ( req, res ) => {
-    res.send( 'Hello login' )
-} );
-app.get( '/signup', ( req, res ) => {
-    res.send( 'Hello registration' )
+    res.send( 'Hello world from the server js' )
 } );
 
 
