@@ -1,13 +1,13 @@
-const dotenv = require('dotenv');
+const dotenv = require( 'dotenv' );
 const express = require( 'express' );
 const app = express();
-const mongoose = require('mongoose');
-dotenv.config({path:'./config.env'});
-require('./db/conn');
+const mongoose = require( 'mongoose' );
+dotenv.config( { path: './config.env' } );
+require( './db/conn' );
 // const User = require('./model/userSchema');
-app.use(express.json());
+app.use( express.json() );
 // link router file
-app.use(require('./router/auth'));
+app.use( require( './router/auth' ) );
 
 
 const PORT = process.env.PORT;

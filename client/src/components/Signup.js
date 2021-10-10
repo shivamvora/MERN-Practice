@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 // import '../components/style.css'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 const Signup = () => {
+    const history = useHistory();
     const [user, setUser] = useState( {
         name: '',
         email: '',
@@ -15,9 +16,34 @@ const Signup = () => {
     const handleInputs = ( e ) => {
         name = e.target.name;
         value = e.target.value;
-
         setUser( { ...user, [name]: value } )
     }
+
+    const postData = async ( e ) => {
+        e.preventDefault();
+        const { name, email, phone, work, password, cpassword } = user;
+        // console.log( "user post data", user )
+        const res = await fetch( "/register", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify( {
+                name, email, phone, work, password, cpassword
+            } )
+        } )
+
+        const data = await res.json();
+        if ( data.status === 422 || !data ) {
+            window.alert( "INVALID Registration" )
+            console.log( "Registration Failed" );
+        } else {
+            window.alert( "Successfully Registration" );
+            console.log( "Registration Successfully" );
+            history.push( '/login' );
+        }
+    }
+
     return (
         <div className="main">
             <section className="signup">
@@ -25,7 +51,7 @@ const Signup = () => {
                     <div className="signup-content">
                         <div className="signup-form">
                             <h1 className="form-title">Sign up</h1>
-                            <form className="register-form" id="register-form">
+                            <form method="POST" className="register-form" id="register-form">
                                 <div className="form-group">
                                     <label htmlFor="name"><i className="fas fa-user"></i></label>
                                     <input type="text" name="name" id="name" placeholder="Your Name" autoComplete="off" value={user.name} onChange={handleInputs} />
@@ -51,7 +77,7 @@ const Signup = () => {
                                     <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Your Password" autoComplete="off" value={user.cpassword} onChange={handleInputs} />
                                 </div>
                                 <div className="form-group form-button buttons">
-                                    <input type="submit" name="signup" id="signup" className="form-submit" value="Register" />
+                                    <input type="submit" name="signup" id="signup" className="form-submit" value="Register" onClick={postData} />
                                     <NavLink to="/login" className="signup-image-link">I am already register</NavLink>
                                 </div>
                             </form>
