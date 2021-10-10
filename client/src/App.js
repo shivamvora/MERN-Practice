@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import About from './components/About'
 import Contact from './components/Contact'
 import ErrorPage from './components/ErrorPage'
@@ -13,6 +13,16 @@ const App = () => {
     <>
       <Navbar />
 
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route component={ErrorPage} />
+      </Switch>
+
+      {/* 
       <Route exact path="/">
         <Home />
       </Route>
@@ -33,9 +43,9 @@ const App = () => {
         <Signup />
       </Route>
 
-      <Route path="/not-found">
+      <Route>
         <ErrorPage />
-      </Route>
+      </Route> */}
 
     </>
   )
