@@ -593,6 +593,29 @@ label.valid:after {
 .purple-border textarea {
   border: 1px solid #ba68c8;
 }
+.homepage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.homepage h1 {
+  color: #a4c9e2;
+  border-top: 1px solid rgb(172, 172, 172);
+  border-top-width: 2px;
+  border-bottom: 10px solid rgb(172, 172, 172);
+  border-bottom-width: 2px;
+  border-radius: 15px 50px;
+  padding: 60px 250px;
+}
+
+.not-found {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.not-found h1 {
+  color: #a4c9e2;
+}
 
 .green-border-focus .form-control:focus {
   border: 1px solid #97c6e6;

@@ -1,14 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Home = () => {
+const ErrorPage = () => {
     return (
         <div className="main">
             <section className="signup">
                 <div className="container">
                     <div className="signup-content">
-                        <div className="homepage">
-                            <h1>Welcome to Homepage</h1>
+                        <div className="not-found">
+                            <h1>WE ARE SORRY PAGE NOT FOUND</h1>
+                            <Link to="/" type="button" class="btn btn-outline-primary">Go to Homepage</Link>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -16,4 +19,4 @@ const Home = () => {
     )
 }
 
-export default Home;
+export default ErrorPage

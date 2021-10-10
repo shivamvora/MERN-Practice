@@ -2,6 +2,7 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import About from './components/About'
 import Contact from './components/Contact'
+import ErrorPage from './components/ErrorPage'
 import Home from './components/Home'
 import Login from './components/Login'
 import Navbar from './components/Navbar'
@@ -30,6 +31,10 @@ const App = () => {
 
       <Route path="/signup">
         <Signup />
+      </Route>
+
+      <Route path="/not-found">
+        <ErrorPage />
       </Route>
 
     </>
