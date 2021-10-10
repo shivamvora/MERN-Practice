@@ -607,7 +607,9 @@ label.valid:after {
   border-radius: 15px 50px;
   padding: 60px 250px;
 }
-
+.some-margin {
+  margin-left: 50px;
+}
 .not-found {
   display: grid;
   justify-content: center;

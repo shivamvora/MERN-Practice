@@ -3,7 +3,7 @@ import React from 'react';
 
 const Contact = () => {
     return (
-        <div class="main">
+        <div className="main">
             <section className="signup">
                 <div className="container">
                     <div className="signup-content">
@@ -12,20 +12,20 @@ const Contact = () => {
                             <form className="register-form" id="contact_form">
                                 <div className="form-group">
                                     <label htmlFor="name"><i className="fas fa-user"></i></label>
-                                    <input type="text" name="name" id="contact_form_name" placeholder="Your Name" autoComplete="off" required="true" />
+                                    <input type="text" name="name" id="contact_form_name" placeholder="Your Name" autoComplete="off" required={true} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="email"><i className="fas fa-envelope"></i></label>
-                                    <input type="email" name="email" id="contact_form_email" placeholder="Your Email" autoComplete="off" required="true" />
+                                    <input type="email" name="email" id="contact_form_email" placeholder="Your Email" autoComplete="off" required={true} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="phone"><i className="fas fa-phone"></i></label>
-                                    <input type="number" name="phone" id="contact_form_phone" placeholder="Your Phone Number" autoComplete="off" required="true" />
+                                    <input type="number" name="phone" id="contact_form_phone" placeholder="Your Phone Number" autoComplete="off" required={true} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="work"><i className="fas fa-briefcase"></i></label>
-                                    <div class="form-group green-border-focus">
-                                        <textarea class="form-control" id="message" placeholder="Message" rows="3"></textarea>
+                                    <div className="form-group green-border-focus">
+                                        <textarea className="form-control" id="message" placeholder="Message" rows="3"></textarea>
                                     </div>
                                 </div>
 
