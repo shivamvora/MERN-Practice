@@ -10,6 +10,7 @@ const Signup = () => {
         phone: '',
         work: '',
         password: '',
+        location: '',
         cpassword: '',
     } )
     let name, value;
@@ -21,7 +22,7 @@ const Signup = () => {
 
     const postData = async ( e ) => {
         e.preventDefault();
-        const { name, email, phone, work, password, cpassword } = user;
+        const { name, email, phone, work, password, cpassword, location } = user;
         // console.log( "user post data", user )
         const res = await fetch( "/register", {
             method: 'POST',
@@ -29,7 +30,7 @@ const Signup = () => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify( {
-                name, email, phone, work, password, cpassword
+                name, email, phone, work, password, cpassword, location
             } )
         } )
 
@@ -68,6 +69,10 @@ const Signup = () => {
                                 <div className="form-group">
                                     <label htmlFor="work"><i className="fas fa-briefcase"></i></label>
                                     <input type="text" name="work" id="work" placeholder="Your Profession" autoComplete="off" value={user.work} onChange={handleInputs} />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="work"><i class="fas fa-map-marker-alt"></i></label>
+                                    <input type="text" name="location" id="location" placeholder="City,State,Country" autoComplete="off" value={user.location} onChange={handleInputs} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="password"><i className="fas fa-key"></i></label>

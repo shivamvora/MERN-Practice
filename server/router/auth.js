@@ -13,6 +13,7 @@ router.get( '/', ( req, res ) => {
     res.send( 'Hello world from the auth' )
 } );
 
+
 /**
  * using promises
  */
@@ -42,9 +43,9 @@ router.get( '/', ( req, res ) => {
  */
 router.post( '/register', async ( req, res ) => {
 
-    const { name, email, phone, work, password, cpassword } = req.body;
+    const { name, email, phone, work, password, cpassword, location } = req.body;
 
-    if ( !name || !email || !phone || !work || !password || !cpassword ) {
+    if ( !name || !email || !phone || !work || !password || !cpassword || !location ) {
         return res.status( 422 ).json( { error: "please fillled the field properly" } )
     }
     try {
@@ -54,7 +55,7 @@ router.post( '/register', async ( req, res ) => {
         } else if ( password != cpassword ) {
             return res.status( 422 ).json( { error: "Password are not matching" } )
         } else {
-            const user = new User( { name, email, phone, work, password, cpassword } );
+            const user = new User( { name, email, phone, work, password, cpassword, location } );
             const userRegister = await user.save();
             if ( userRegister ) {
                 res.status( 201 ).json( { message: "user registered successfully" } )

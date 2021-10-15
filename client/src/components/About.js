@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './About.css';
 import { useHistory } from 'react-router-dom';
 
 const About = () => {
     const history = useHistory();
-
+    const [userData, setUserData] = useState( {} );
+    // console.log( "init state of data", userData )
     // const callAboutPage = async () => {
     //     try {
     //         const res = await fetch( '/about', {
@@ -44,7 +45,8 @@ const About = () => {
                 credentials: "include"
             } );
             const data = await res.json();
-            console.log( data );
+            console.log( "data of user", data );
+            setUserData( data )
             // setuserData( data );
 
             if ( !res.status === 200 ) {
@@ -73,9 +75,9 @@ const About = () => {
                                 <div className="d-flex flex-column align-items-center text-center">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width="150" />
                                     <div className="mt-3">
-                                        <h4>Shivam Vora</h4>
-                                        <p className="text-secondary mb-1">Full Stack Developer</p>
-                                        <p className="text-muted font-size-sm">Ahemdavad, Gujarat, India</p>
+                                        <h4>{userData.name}</h4>
+                                        <p className="text-secondary mb-1">{userData.work}</p>
+                                        <p className="text-muted font-size-sm">{userData.location}</p>
                                     </div>
                                 </div>
                             </div>
@@ -91,7 +93,7 @@ const About = () => {
                                         <h6 className="mb-0">Full Name</h6>
                                     </div>
                                     <div className="col-sm-9 text-secondary">
-                                        Kenneth Valdez
+                                        {userData.name}
                                     </div>
                                 </div>
                                 <hr />
@@ -100,7 +102,7 @@ const About = () => {
                                         <h6 className="mb-0">Email</h6>
                                     </div>
                                     <div className="col-sm-9 text-secondary">
-                                        fip @jukmuh.al
+                                        {userData.email}
                                     </div>
                                 </div>
                                 <hr />
@@ -109,25 +111,17 @@ const About = () => {
                                         <h6 className="mb-0">Phone</h6>
                                     </div>
                                     <div className="col-sm-9 text-secondary">
-                                        ( 239 ) 816-9029
+                                        {userData.phone}
                                     </div>
                                 </div>
                                 <hr />
-                                <div className="row">
-                                    <div className="col-sm-3">
-                                        <h6 className="mb-0">Mobile</h6>
-                                    </div>
-                                    <div className="col-sm-9 text-secondary">
-                                        ( 320 ) 380-4539
-                                    </div>
-                                </div>
-                                <hr />
+
                                 <div className="row">
                                     <div className="col-sm-3">
                                         <h6 className="mb-0">Address</h6>
                                     </div>
                                     <div className="col-sm-9 text-secondary">
-                                        Bay Area, San Francisco, CA
+                                        {userData.location}
                                     </div>
                                 </div>
                                 <hr />
