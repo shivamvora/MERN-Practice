@@ -36,7 +36,7 @@ const Signup = () => {
         const data = await res.json();
         console.log( "data", data )
         if ( data.error || data.status === 422 ) {
-            window.alert( "INVALID Registration, make sure fill all fields" )
+            window.alert( data.error )
             console.log( "Registration Failed" );
         } else {
             window.alert( "Successfully Registration" );

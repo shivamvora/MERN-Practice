@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require( 'mongoose' );
 const DB = process.env.DATABASE;
 
 
@@ -7,11 +7,11 @@ const DB = process.env.DATABASE;
 // mongoose.connection.on('error',()=>console.log('connection failed... with -'))
 
 
-mongoose.connect(DB,{
-    useNewUrlParser: true,
+mongoose.connect( DB, {
+	useNewUrlParser: true,
 	useUnifiedTopology: true,
-	// useCreateIndex: true,
-	// useFindAndModify: false
-}).then(()=>{
-    console.log(`connection successfully......`);
-}).catch((err)=>console.log(`no connection ${err}`));
+	useCreateIndex: true,
+	useFindAndModify: false
+} ).then( () => {
+	console.log( `connection successfully......` );
+} ).catch( ( err ) => console.log( `no connection ${err}` ) );

@@ -1,12 +1,14 @@
+const jwt = require( 'jsonwebtoken' )
 const express = require( 'express' );
 const router = express.Router();
 const bcrypt = require( 'bcryptjs' )
-const jwt = require( 'jsonwebtoken' )
-
 require( '../db/conn' );
+const mongoose = require( 'mongoose' );
 const User = require( '../model/userSchema' );
-
-
+const cookieParser = require( 'cookie-parser' )
+const Authenticate = require( '../middleware/authenticate' )
+const app = express();
+app.use( cookieParser() );
 router.get( '/', ( req, res ) => {
     res.send( 'Hello world from the auth' )
 } );
@@ -79,8 +81,8 @@ router.post( '/signin', async ( req, res ) => {
         if ( userLogin ) {
             const isMatch = await bcrypt.compare( password, userLogin.password )
             token = await userLogin.generateAuthToken();
-            console.log( token )
-            res.cookie( "jwtoken", token, {
+            console.log( "generated token", token )
+            res.cookie( 'test', token, {
                 expires: new Date( Date.now() + 2589200000 ),
                 httpOnly: true
             } );
@@ -101,5 +103,10 @@ router.post( '/signin', async ( req, res ) => {
     }
 } )
 
+
+router.get( '/about', Authenticate, ( req, res ) => {
+    // res.send( `Hello About from the server` )
+    res.send( req.rootUser );
+} )
 
 module.exports = router;
