@@ -5,34 +5,6 @@ import { useHistory } from 'react-router-dom';
 const About = () => {
     const history = useHistory();
     const [userData, setUserData] = useState( {} );
-    // console.log( "init state of data", userData )
-    // const callAboutPage = async () => {
-    //     try {
-    //         const res = await fetch( '/about', {
-    //             method: 'GET',
-    //             headers: {
-    //                 Accept: "application/json",
-    //                 "Content-Type": "application/json"
-    //             },
-    //             credentials: "include"
-    //         } );
-    //         const data = await res.json();
-    //         console.log( "data in about", data );
-    //         const final = data.then( res => console.log( "resss", res ) )
-    //         console.log( "final", final );
-
-    //         if ( !res.status === 200 ) {
-    //             const error = new Error( res.error )
-    //             throw new error();
-    //         }
-    //     } catch ( err ) {
-    //         console.log( err );
-    //         history.push( '/login' );
-    //     }
-    // }
-    // useEffect( () => {
-    //     callAboutPage();
-    // }, [] )
 
     const callAboutPage = async () => {
         try {
@@ -88,6 +60,15 @@ const About = () => {
                     <div className="col-md-8">
                         <div className="card mb-3">
                             <div className="card-body">
+                                <div className="row">
+                                    <div className="col-sm-3">
+                                        <h6 className="mb-0">User ID</h6>
+                                    </div>
+                                    <div className="col-sm-9 text-secondary">
+                                        {userData._id}
+                                    </div>
+                                </div>
+                                <hr />
                                 <div className="row">
                                     <div className="col-sm-3">
                                         <h6 className="mb-0">Full Name</h6>

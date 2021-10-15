@@ -1,7 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 const Contact = () => {
+
+    const [userData, setUserData] = useState( {} );
+
+    const userContact = async () => {
+        try {
+            const res = await fetch( '/getdata', {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            } );
+            const data = await res.json();
+            console.log( "data of user in contact page", userData );
+            setUserData( data );
+            console.log( "data of user in contact page", userData );
+
+            // setuserData( data );
+
+            if ( !res.status === 200 ) {
+                const error = new Error( res.error );
+                throw new error();
+            }
+
+
+        } catch ( err ) {
+            console.log( err );
+        }
+    }
+
+    useEffect( () => {
+        userContact();
+    }, [] )
+
+
     return (
         <div className="main">
             <section className="signup">
@@ -12,15 +46,15 @@ const Contact = () => {
                             <form className="register-form" id="contact_form">
                                 <div className="form-group">
                                     <label htmlFor="name"><i className="fas fa-user"></i></label>
-                                    <input type="text" name="name" id="contact_form_name" placeholder="Your Name" autoComplete="off" required={true} />
+                                    <input type="text" name="name" id="contact_form_name" placeholder="Your Name" value={userData.name} autoComplete="off" required={true} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="email"><i className="fas fa-envelope"></i></label>
-                                    <input type="email" name="email" id="contact_form_email" placeholder="Your Email" autoComplete="off" required={true} />
+                                    <input type="email" name="email" id="contact_form_email" placeholder="Your Email" value={userData.email} autoComplete="off" required={true} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="phone"><i className="fas fa-phone"></i></label>
-                                    <input type="number" name="phone" id="contact_form_phone" placeholder="Your Phone Number" autoComplete="off" required={true} />
+                                    <input type="number" value={userData.phone} name="phone" id="contact_form_phone" placeholder="Your Phone Number" autoComplete="off" required={true} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="work"><i className="fas fa-briefcase"></i></label>
