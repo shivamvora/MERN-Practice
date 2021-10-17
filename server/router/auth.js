@@ -137,5 +137,11 @@ router.post( '/get_contact', Authenticate, async ( req, res ) => {
     }
 } )
 
+router.get( '/logout', ( req, res ) => {
+    console.log( "log out" );
+    res.clearCookie( 'test', { path: '/' } )
+    res.status( 200 ).send( 'User Logout' );
+} )
+
 
 module.exports = router;

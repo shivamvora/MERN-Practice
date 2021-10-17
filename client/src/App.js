@@ -8,6 +8,7 @@ import Login from './components/Login'
 import Navbar from './components/Navbar'
 import Signup from './components/Signup'
 import 'bootstrap/dist/css/bootstrap.css'
+import Logout from './components/Logout'
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/contact" component={Contact} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route path="/logout" component={Logout} />
         <Route component={ErrorPage} />
       </Switch>
 
