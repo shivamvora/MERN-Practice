@@ -28,8 +28,8 @@ const Routing = () => {
 
 const App = () => {
   const [state, dispatch] = useReducer( reducer, initialState )
-  console.log( "what is state in APP js file", state )
-  console.log( "state inside apppp", state );
+  // console.log( "what is state in APP js file", state )
+  // console.log( "state inside apppp", state );
   return (
     <>
       <UserContext.Provider value={{ state, dispatch }}>

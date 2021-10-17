@@ -30,7 +30,7 @@ const Login = () => {
         }
         else {
             dispatch( { type: 'USER', payload: true } );
-            console.log( "after upate the state", state )
+            // console.log( "after upate the state", state )
             alert( "Login Successfully" );
             history.push( '/' );
         }
