@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { NavLink, useHistory } from 'react-router-dom';
+import { UserContext } from '../App';
 
 const Login = () => {
+
+    const { state, dispatch } = useContext( UserContext );
+
     const history = useHistory();
     const [email, setEmail] = useState( '' );
     const [password, setPassword] = useState( '' );
@@ -25,7 +29,9 @@ const Login = () => {
             alert( "Invalid Credentials" )
         }
         else {
-            alert( "Login Successfully" )
+            dispatch( { type: 'USER', payload: true } );
+            console.log( "after upate the state", state )
+            alert( "Login Successfully" );
             history.push( '/' );
         }
     }

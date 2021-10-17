@@ -606,6 +606,7 @@ h3 {
   .homepage h1,
   h3 {
     color: #a4c9e2;
+    text-align: justify;
   }
 }
 @media only screen and (orientation: landscape) {
