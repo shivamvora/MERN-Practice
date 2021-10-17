@@ -594,18 +594,25 @@ label.valid:after {
   border: 1px solid #ba68c8;
 }
 .homepage {
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
 }
-.homepage h1 {
+.homepage h1,
+h3 {
   color: #a4c9e2;
-  border-top: 1px solid rgb(172, 172, 172);
-  border-top-width: 2px;
-  border-bottom: 10px solid rgb(172, 172, 172);
-  border-bottom-width: 2px;
-  border-radius: 15px 50px;
-  padding: 60px 250px;
+}
+@media only screen and (max-device-width: 480px) {
+  .homepage h1,
+  h3 {
+    color: #a4c9e2;
+  }
+}
+@media only screen and (orientation: landscape) {
+  .homepage h1,
+  h3 {
+    color: #a4c9e2;
+  }
 }
 .some-margin {
   margin-left: 50px;
